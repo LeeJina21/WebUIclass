@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>폼 예제 3</title>
+<script type="text/javascript">
+	window.onload = function() {
+		var date = new Date();
+		
+		document.frm1.y.value = date.getFullYear();
+		document.frm1.m.value = date.getMonth()+1;
+		document.frm1.d.value = date.getDate();
+		
+		var day2 = date.getDay();
+		
+		var weeks2 = new Array("일","월","화","수","목","금","토");	// var weeks2=["일","월","화","수","목","금","토"];
+		frm1.w.value = weeks2[day2];
+		
+		// 손가락 버튼을 클릭하면 요일 구하기
+		document.getElementById('button').onclick = function(){
+			var frm = document.frm1;
+			var myDate = new Date();
+			myDate.setYear(frm.y.value);
+			myDate.setMonth((frm.m.value)-1);
+			myDate.setDate(frm.d.value);
+			
+			var day = myDate.getDay();
+			
+			var weeks = new Array("일","월","화","수","목","금","토");
+			frm.w.value=weeks[day];
+		}
+	}
+//-->
+</script>
+</head>
+<body>
+
+	<hr>
+	<hr>
+
+	요일을 알아봅시다.
+	<br>
+
+	<form name="frm1">
+		<input type="text" name="y" size=4>년
+		<input type="text" name="m" size=2>월
+		<input type="text" name="d" size=2>일
+		<input type="button" value="☞" id="button">
+		<input type="text" name="w" size=4>요일입니다.
+	</form>
+
+	<hr>
+	<hr>
+
+
+</body>
+</html>

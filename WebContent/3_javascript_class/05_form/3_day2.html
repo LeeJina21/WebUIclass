@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>콤보 날짜</title>
+<script type="text/javascript">
+	window.onload = function() {
+		var frm = document.frm1;
+		var myDate = new Date();
+
+		// 년, 월 콤보박스 세팅 (올해 연도를 기준으로 -5 ~ +5년도 값으로 지정, 월은 1~12)
+		// 년도
+		for (var i = 0; i <= 10; i++) {
+			frm.y.add(new Option(myDate.getFullYear() - 5 + i));
+		}
+
+		// 월
+		for (var i = 1; i < 13; i++) {
+			frm.m.add(new Option(i));
+		}
+
+		// 현재 년, 월로 세팅
+		frm.y.options[5].selected = true;
+		frm.m.options[myDate.getMonth()].selected = true;
+
+		// 일 설정 함수
+		// 1) 현재 선택된 년,월의 인덱스값 얻어오기
+		// 2) 그 인덱스의 값으로 현재 년/월의 마지막 날짜 얻어오기(.text 태그내의 값)
+		// 3) 그 날 수만큼 반복문에서 option 태그 생성하기
+
+		function setCalender() {
+			var year = frm.y.options[frm.y.selectedIndex].text;
+			var month = frm.m.options[frm.m.selectedIndex].text;
+
+			var myDate2 = new Date();
+			myDate2.setYear(year);
+			myDate2.setMonth(month);
+			myDate2.setDate(0);
+
+			for (var i = 1; i < myDate2.getDate() + 1; i++) {
+				frm.d.add(new Option(i));
+			}
+		}
+		
+		setCalender();
+		
+		// 현재 날짜로 일 세팅
+		frm.d.options[myDate.getDate()-1].selected = true;
+		
+		// 날짜(년/월) 변경 이벤트 처리
+		frm.y.onchange = changeYear;
+		frm.m.onchange = changeMonth;
+		
+		function changeYear(){
+			frm.m.options[0].selected = true;
+			frm.d.length=0;
+			setCalender();
+			frm.d.options[0].selected = true;
+		}
+		
+		function changeMonth(){
+			frm.d.length=0;
+			setCalender();
+			frm.d.options[0].selected = true;
+		}
+		
+		// 버튼 클릭하면 요일 출력
+		frm.button.onclick = showDay;
+		function showDay(){
+			var myDate3 = new Date();
+			myDate3.setYear(frm.y.value);
+			myDate3.setMonth((frm.m.value)-1);
+			myDate3.setDate(frm.d.value);
+			
+			var day = myDate3.getDay();
+			
+			var weeks = new Array("일","월","화","수","목","금","토");
+			frm.w.value=weeks[day];
+		}
+		
+		//
+		document.frm1.y.value = myDate.getFullYear();
+		document.frm1.m.value = myDate.getMonth()+1;
+		document.frm1.d.value = myDate.getDate();
+		
+		var day2 = myDate.getDay();
+		
+		var weeks2 = new Array("일","월","화","수","목","금","토");	// var weeks2=["일","월","화","수","목","금","토"];
+		frm.w.value = weeks2[day2];
+		
+	}
+</script>
+</head>
+<body>
+	<form name="frm1">
+		<select name="y"></select>년
+		<select name="m"></select>월
+		<select name="d"></select>일
+		<input type="button" value="☞" id="button">
+		<input type="text" name="w" size=4>요일입니다.
+	</form>
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Ajax 계산기</title>
+
+<script type="text/javascript"
+	src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script type="text/javascript">
+	$(function() {
+		document.forms[0].onsubmit = handle_submit;
+		// s를 안 붙이면 태그 하나를 가리킨다 그러면 <form action="./jsp/calc-action.jsp" method="get">의
+		// action개 실행되서 값을 가지고 .jsp로 넘어가는 것이다.
+		
+		// s를 붙이면 태그 모두를 가리킨다 이러면 .jsp로 넘어가지 않고
+		// 태그 안에 #result를 찾아 $("#result").html(data);가 실행되는 것이다
+		
+		// form는 동기라 비동기 형식을 위해 forms로 씀
+	});
+
+	function handle_submit() {
+		send_calc(); // 이것만 하면 동기식이됨
+		return false; // 전송되지 않도록 비동기 통신이 가능
+	}
+	
+	function send_calc(){	// 얘 혼자 서버에 다녀옴
+		$.ajax({
+			url : "./jsp/calc-action.jsp",
+			type : "get",
+			data : {
+				'op1' : $('#op1').val(),
+				'op2' : $('#op2').val(),
+				'opr' : $('#opr').val()
+			},
+			dataType : 'text',
+			success : function(data){
+				$("#result").html(data);
+			}
+		});
+	}
+	
+</script>
+</head>
+<body>
+
+	<form action="./jsp/calc-action.jsp" method="get">	<!-- 비동기 처림하면 어떤 문서를 걸어도 상관없음 -->
+		<input name="op1" id='op1' size="3"> <select name="opr"
+			id='opr'>
+			<option>+</option>
+			<option>-</option>
+			<option>*</option>
+			<option>/</option>
+			<option>%</option>
+		</select> <input name="op2" id='op2' size="3"> <input type="submit"
+			value=" = ">
+	</form>
+	<fieldset>
+		<legend>실행결과</legend>
+		<div id="result"></div>
+	</fieldset>
+
+</body>
+</html>

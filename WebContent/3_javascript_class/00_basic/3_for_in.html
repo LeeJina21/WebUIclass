@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>새로운 for 명령</title>
+<script type="text/javascript">
+	var arr = [ '차승원', '주원', '강동원', '이도현' ];
+	for (var i = 0; i < arr.length; i++) {
+		document.writeln('arr[' + i + '] = ' + arr[i] + "<br>");
+	}
+	
+	for(var i in arr){
+		document.writeln('arr[' + i + '] = ' + arr[i] + "<br>");
+	}
+	
+	var obj = {first : '동우', last:'홍'};
+	for(var i in obj){
+		document.writeln('obj.' + i + ' = ' + obj[i] + "<br>");
+	}
+	document.writeln("-----------------------<br>");
+	
+	var book={};
+	book.title='자바스크립트';
+	book.publish='JPUB';
+	book.price=33000;
+	
+	for(var i in book){
+		document.writeln('obj.' + i + ' = ' + book[i] + "<br>");
+	}
+	
+	
+	
+</script>
+</head>
+<body>
+
+</body>
+</html>

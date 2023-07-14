@@ -1,0 +1,34 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>파라메터 인자</title>
+<script type="text/javascript">
+	// 기본형 파라미터 인자
+	var pri = 10;
+	function priParam(pri){
+		pri--;	// 원본값 수정x
+		return pri;
+	}
+	
+	document.writeln('기본형인자 1>' + priParam(pri) + '<br>');	// (pri)는 var pri의 값을 복사해온것이라 함수 밑에 pri만 써도 var pri의 값이 변하지 않는다 
+	document.writeln('기본형인자 2>' + pri + '<br>');
+	
+	// 참조형 파라미터 인자
+	var ref = [1,2,3,4,5];
+	
+	function refParam(ref){
+		ref.pop();	// pop() 배열수정 원본값 수정됨
+		return ref;
+	}
+	document.writeln('참조형인자 1>' + refParam(ref) + '<br>');	// 배열이 들어간 주소 넘겨줌
+	document.writeln('참조형인자 2>' + ref + '<br>');
+	
+</script>
+</head>
+
+<body>
+
+
+</body>
+</html>

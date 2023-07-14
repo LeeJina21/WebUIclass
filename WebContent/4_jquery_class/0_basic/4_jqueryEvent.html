@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+	.bg { background : yellow; }
+    .border { border : 3px dotted red; }
+</style>
+<script type="text/javascript" src="../lib/jquery-1.9.1.js"></script>
+<script type="text/javascript">
+	$(function(){
+		// 클릭한 li요소를 result에 출력
+		/* $('li').bind('click', function(){
+			$('#result').text($(this).text());	
+		}); */
+		
+		// 축약형 .bind() 처럼 여러번 실행 가능
+		/* $('li').click(function(){
+			$('#result').text($(this).text());	
+		}); */
+		
+		/* $('li').one('click', function(){		// .one()은 단발성
+			$('#result').text(this.innerHTML);	
+		}); */
+		
+		
+		// 동적으로 요소 생성
+		$('h1').click(function(){
+			var li = $('<li>').html(new Date());	// 동적으로 생성된 요소에는 이벤트가 걸리지 않음(on()사용해야함)
+			$('ul').append(li);	// ul에 var li 붙이기
+		});
+		
+		$('ul').on('click','li', function(){	// ul태그의 클릭이 발생하면 li에 이벤트가 발생
+			$('#result').text(this.innerHTML);	
+		});
+		
+		$('h1').css('cursor', 'pointer');	// h1에 마우스 올리면 커서 나오는 css 검
+		
+		
+		
+	});
+</script>
+</head>
+<body>
+	<h1>제이쿼리 이벤트</h1>
+	<ul>
+		<li>부에노스 아이레스</li>
+		<li>바르셀로나</li>
+		<li>리마</li>
+		<li>라파스</li>
+	</ul>
+	<div id="result"></div>
+</body>
+</html>

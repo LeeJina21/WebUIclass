@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title> Alert Test </title>
+<script type="text/javascript">
+	//<!--
+		function show_dialog(){
+		// 1. alert
+		//alert("이 페이지는 https://www.naver.com/로 이동되었습니다. \n앞으로 이 주소로 접속해주세요");
+		//location.href = "https://www.naver.com/";	// 이 주소로 이동
+		
+		// 2. confirm 예스 or 노
+		/* var res = confirm("이 페이지는 https://www.naver.com/로 이동되었습니다. \n이동하시겠습니까?");
+		if(res){	// res==true
+			location.href = "https://www.naver.com/";
+		} */
+		
+		// 3. prompt
+		var inputTxt = prompt("원하는 사이트 주소를 입력하세요");
+		location.href = inputTxt;
+		
+	}
+	//-->
+</script>
+</head>
+<body onload="show_dialog()">
+이 사이트는 조만간 운영하지 않습니다.
+</body>
+</html>

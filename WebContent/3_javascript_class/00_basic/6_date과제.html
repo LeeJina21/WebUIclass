@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>달력 출력하기</title>
+<script type="text/javascript">
+	// 현재 날짜에 해당하는 달의 달력을 출력
+
+	// 월 출력 숫자 + 1 : 현재월 -> setMonth()
+	// 전 달의 마지막 날 : 현재월의 마지막 날짜
+	// 현재 요일이 숫자 : [x] -> 1씩 증가하면서 날짜 찍기
+
+	var e = new Date();
+	e.setMonth(e.getMonth() + 2);
+	var date = e.setDate(0);
+	document.writeln(e.toLocaleString() + '<br>');
+
+	// 이번달 첫째날 구할꺼임
+	var w = new Date();
+	w.setMonth(e.getMonth());
+	w.setDate(0);
+	document.writeln(w.toLocaleString() + '<br>');
+	document.writeln(w.getDay() + '<br>'); // 전달 마지막 요일
+	eDate = e.getDate() // 이번달 마지막날
+	wDate = w.getDay() + 1 // 이번달 첫번째 요일
+	document.writeln(eDate + '<br>');
+	document.writeln(wDate + '<br>');
+
+	document.writeln('<hr>');
+
+	var i = [];
+	var j = 1;
+	document.writeln('<table border="1" width="300" height="150">');
+	document
+			.writeln('<tr><th>일</th><th>월</th><th>화</th><th>수</th><th>목</th><th>금</th><th>토</th></tr>');
+	for (var a = 0; a < 6; a++) {
+
+		document.writeln('<tr>')
+
+		i[a] = j;
+
+		if (a == 0) {
+
+			for (var c = 0; c < wDate; c++) {
+				document.writeln('<td></td>');
+			}
+			for (var c = 0; c < 7 - wDate; c++) {
+				document.writeln('<td>' + j + '</td>');
+				j++;
+			}
+		} else {
+			for (var b = 0; b < 7; b++) {
+				if (j <= eDate) {
+					document.writeln('<td>' + j + '</td>');
+				}
+				j++;
+			}
+		}
+
+		document.writeln('<tr>')
+	}
+	document.writeln('</table>')
+
+	
+	
+	document.writeln('<hr')
+
+	var num = 1;
+	var today = new Date('2023/07/02');
+
+	today.setMonth(today.getMonth() + 1);
+	today.setDate(0);
+
+	var firstDay = new Date('2023/07/02'); // 출력하고자 하는 년/월
+	firstDay.setDate(1);
+	document.writeln("<h1>" + firstDay.getFullYear() + "년 "
+			+ (firstDay.getMonth() + 1) + "월</h1> <br>");
+	
+	document.writeln(firstDay.getDay(1) + " 처음 요일 <br>");
+	document.writeln(today.getDate() + " 일자 <br>");
+
+	document.writeln("<table border='2' width='300' height='150' ");
+	document
+			.writeln('<tr><th>일</th><th>월</th><th>화</th><th>수</th><th>목</th><th>금</th><th>토</th></tr>');
+
+	for (var i = 0; i < 6; i++) {
+		document.writeln("<tr>");
+		for (var j = 0; j < 7; j++) {
+			if ((firstDay.getDay() == j) && (num <= today.getDate())) {
+				document.writeln("<td>" + num++ + "</td>");
+				firstDay.setDate(num);
+			} else {
+				document.writeln("<td></td>");
+			}
+		}
+		document.writeln("</tr>");
+	}
+	document.writeln("</table>");
+</script>
+</head>
+<body>
+
+</body>
+</html>

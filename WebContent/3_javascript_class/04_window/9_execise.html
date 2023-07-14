@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+window.onload = function() {
+	var sel = document.getElementsByName('chooseSite');
+	
+	for(var i=0; i<sel.length; i++){
+		sel[i].onchange = showSite;
+		
+	}
+	
+	function showSite() {
+		{
+			var idx = document.getElementById('chooseSite').value;
+			//var idx = document.frm.chooseSite.value;
+			//document.write(idx + " 얍");
+			var winObj = window.open("9_execise_mini.html", "몰라","width=230, height=130");
+			//winObj.focus();
+			//winObj.document.getElementById("asd").value = idx;
+			
+		}
+
+	}
+}
+</script>
+</head>
+<body>
+	<form name="frm" method="post">
+		<select name="chooseSite" id="chooseSite">
+			<option >서울시</option>
+			<option >경기도</option>
+			<option >인천</option>
+		</select><br>
+		<input type="text" name="name2" id="name2" size="20">
+	</form>
+</body>
+</html>

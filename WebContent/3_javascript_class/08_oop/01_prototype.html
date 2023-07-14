@@ -1,0 +1,115 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Javascript 객체지향</title>
+</head>
+<body>
+	<script type="text/javascript">
+		 		// 0. 객체 선언
+		 var obj = new Object();	// var obj = {};	// 뉴 안써도 객체 선언가능 단 밑에 양식처럼 데이터 넣어줘야함
+		 obj.name = '홍동우';
+		 obj.age = 20;
+		 obj.dept = '개발부';
+		 console.log(obj);
+		
+		 var obj2 = { name:'홍동우', age:20, dept:'개발부'};
+		 console.log(obj2);
+		
+		 var output ='';
+		 output += '이름 : '+ obj.name + '<br>';
+		 output += '나이 : '+ obj.age + '<br>';
+		 output += '부서 : '+ obj.dept + '<br>';
+		 document.write(output);
+		
+		 // with(객체)를 사용하면 { }안에서 객체명을 사용하지 않아도 됨
+		 var out ='';
+		 with(obj){
+		 out += '이름 : '+ name + '<br>';
+		 out += '나이 : '+ age + '<br>';
+		 out += '부서 : '+ dept + '<br>';
+		 }
+		 document.write(out);
+		 
+/*		
+		 // 1. 클래스 선언
+		 var Student = function(name, kor, eng, math){
+		 this.name = name;
+		 this.kor = kor;
+		 this.eng = eng;
+		 this.math = math;
+		
+		 this.sum = function(){
+		 return kor+eng+math;
+		 };
+		 };
+		
+		 var s1 = new Student('홍동우',95,85,70);
+		 document.writeln(s1.name + '총점 : ' + s1.sum() +'<br>');
+		
+		 // 2. 동적으로 메소드 추가
+		 s1.showInfo = function(){	// s1['showInfo'] = function(){
+		 return this.name + ' : ' + this.kor + '/' + this.eng + '/' + this.math + '->' + this.sum();
+		 }
+		 document.writeln(s1.showInfo());
+		
+		 var s2 = new Student('홍동순', 95,85,70);
+		 document.writeln(s2.name + '총점 : ' + s2.sum() + '<br>');
+		 //document.writeln(s2.showInfo());	// 얘 안됨 showInfo 호출이지만 걔는 s1에서만 사용되게 만듬, 인스턴스에 동적으로 추가된 메소드는 다른 인스턴스에서 사용할 수 없다
+		 */
+
+		/* 		// 3. 공통적인 메소드 프로토타입으로 선언
+		 var Student = function(name, kor, eng, math){
+		 this.name = name;
+		 this.kor = kor;
+		 this.eng = eng;
+		 this.math = math;
+		 };
+		
+		 Student.prototype.sum = function(){
+		 return this.kor+this.eng+this.math;	// Student 안에 있는걸 써야 하기 떄문에 this.를 붙어야 함
+		 };
+		
+		 Student.prototype.showInfo = function(){	// s1['showInfo'] = function(){
+		 return this.name + ' : ' + this.kor + '/' + this.eng + '/' + this.math + '->' + this.sum() + '<br>';
+		 }
+		
+		 var s1 = new Student('홍동우',95,85,70);
+		 var s2 = new Student('홍동순',95,85,70);
+		
+		 document.writeln(s1.showInfo());
+		 document.writeln(s2.showInfo());
+		
+		 // [참고] __proto__ 은 공유되는 형태
+		 console.log(s1);
+		 console.log(s2);
+		 */
+
+		// [참고] 자바스크립트의 함수는 객체이자 데이터타입이다. 함수는 prototype(프로토타입)이라는 속성을 가진다
+
+		var Student = function(name, kor, eng, math) {
+			this.name = name;
+			this.kor = kor;
+			this.eng = eng;
+			this.math = math;
+		};
+
+		Student.prototype = {
+			sum : function(){
+				 return this.kor+this.eng+this.math;
+			},
+			showInfo : function(){
+				 return this.name + ' : ' + this.kor + '/' + this.eng + '/' + this.math + '->' + this.sum() + '<br>';
+			}
+		}
+		
+		var s1 = new Student('홍동우',95,85,70);
+		var s2 = new Student('홍동순',95,85,70);
+		
+		document.writeln(s1.showInfo());
+		document.writeln(s2.showInfo());
+		
+		
+	</script>
+</body>
+</html>

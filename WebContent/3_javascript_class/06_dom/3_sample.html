@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+body{
+	background-color: #345362;
+}
+div{
+	font-size: 12px;
+	font-family: "굴림", "굴림체";
+	color:#ff3;
+}
+
+</style>
+<script type="text/javascript">
+	function changeStyle(e){
+		document.body.style.backgroundColor="#fff";	// 기본 백그라운드를 #fff로 잡음
+		e.style.color = '#333';		// 넘어온 스타일 컬러를 #fff로 한다
+	}
+</script>
+</head>
+<body>
+	<div onmouseover="javascript:changeStyle(this)">안녕하세요</div>	<!-- 자식 부모를 찾아가는게 아니라 태그값 넘기는 것처럼 this로 넘김 --> 
+	<div onmouseover="javascript:changeStyle(this)">삶은</div>
+	<div onmouseover="javascript:changeStyle(this)">계란</div>
+</body>
+</html>

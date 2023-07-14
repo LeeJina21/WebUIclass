@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Jquery Filter</title>
+<style type="text/css">
+	.bg { background : yellow; }
+    .border { border : 3px dotted red; }
+    .borderRed { border : 3px dotted red; }
+    .borderBlue { border : 3px dotted blue; }
+</style>
+<script type="text/javascript" src="../lib/jquery-1.9.1.js"></script>
+<script type="text/javascript">
+	$(function() {
+		// 1. 기본 필터 검색 
+		//$('li').css('border','2px dotted green');			// li태그를 찾아라
+		//$('li:first').css('border','2px dotted green');	// ll의 처음만
+		//$('li:even').css('border','2px dotted green');	// ll의 짝수만	:odd 홀수
+		//$('li:eq(3)').css('border','2px dotted green');	// ll의 4번째
+		//$('li:lt(2)').css('border','2px dotted green');	// li의 3번쨰 보다 작은 (0,1)만
+		//$('li:not(li:first)').css('border','2px dotted green');	// li의 첫번째만 제외한
+		//$('li:contains(튀김)').css('border','2px dotted green');	// 튀김이라는 단어를 포함한 li만 찾기 + 자손에 튀김 있으면 그 위에 li도 선택됨
+		
+		
+		// 2. 컨테인 검색
+		//$('ul:has(li:contains(어묵))').css('border','2px dotted green');	// ul의 자식 li중 어묵을 포함한 것만
+		//$('li:contains(어묵)').css('border','2px dotted #0dc');	// 위와 비교
+		
+		//$('li').first().attr('class', 'Hello');
+		
+		//var temp = $('li:contains(어묵)').parent().attr('id');// li중 어묵을 포함한 부모의 id 찾기
+		//alert(temp);
+		
+		
+		// 3. class 속성 제어
+		//$('li:odd').addClass('bg');			// li의 홀수만
+		//$('li:last').addClass('border');		// li의 마지막것만
+		
+		
+		/* $('li').bind('click', function(){	// .bind 이벤트 등록
+			$(this).addClass('border');		// $(this) 부모찾기 클릭한 li가 어떤건지 찾기위해 사용함
+		}); */
+		
+		
+		/* $('li').click(function(){			// .toggle
+			$(this).toggleClass("border");	// toggleClass 두번 클릭시 추가된 속성 제거
+		}); */
+		
+		
+		// 마우스가 올라가면 border클래스명 추가하고, 마우스가 벗어나면 사라지게
+		// mouseenter (마우스 들어갈때), mouseleave (마우스 빠져나갈때)
+		/* $('li').mouseenter(function(){	
+			$(this).addClass("border");	
+		});
+		$('li').mouseleave(function(){	
+			$(this).removeClass("border");
+		}); */
+		/* $('li').hover(function(){			// 마우스가 올라가고, 나갔을때
+			$(this).toggleClass("border");	
+		}); */
+		
+		
+		// [ 문제 ] 어묵 밑의 자식 요소들만 css의 border 클래스 적용
+		//$('li:contains(어묵)').children().addClass("border");	// 밑와 얘 나오는 모양이 다름
+		//$('li:contains(어묵)').find('li').addClass("border");
+		//$('#food ul>li').addClass('border');
+		
+		// [ 문제 ] 어묵 밑의 자식 요소 뺴고 css의 border 클래스 적용
+		//$('ul > li:contains(튀김)').not('li:has(ul)').addClass("border");
+		/* $('#food>li').not('li:has(ul)').hover(function(){
+			$(this.addClass('bg'));
+		}, function(){
+			$(this.removeClass('bg'));
+		}); */
+		
+		// [ 문제 ] 튀김을 포함한 요소에 백그라운드 적용
+		//$('li:contains(튀김)').css('background', '#efc');
+		
+		// [ 문제 ] 리스트 첫번째 요소의 값을 쫄면으로 변경
+		//$('li:first').text('쫄면');
+		
+		
+		// [ 문제 ] 가장 최상단의 튀김을 포함한 요소에 백그라운드 적용
+		//$('#food>li:not(li:lt(2))').not('li:has(ul)').addClass('bg');
+		//$('#food>li:contains(튀김)').not('li:has(ul)').addClass('bg');
+		
+	});
+</script>
+</head>
+<body>
+	<h1>제이쿼리 시작</h1>
+	<h2>내가 좋아하는 음식</h2>
+	<ul id="food">
+		<li>떡볶이</li>
+		<li>어묵
+			<ul>
+				<li>어묵국</li>
+				<li>어묵볶음</li>
+				<li>어묵말이</li>
+				<li>어묵튀김</li>
+			</ul>
+		</li>
+		<li>튀김</li>
+		<li>닭튀김</li>
+		<li>소튀김</li>
+		<li>돼지튀김</li>
+	</ul>
+	<h2>내가 좋아하는 술</h2>
+	<ul>
+		<li>와인</li>
+		<li>맥주</li>
+		<li>막걸리</li>
+		<li>소주</li>
+	</ul>
+	
+	<div id="result"></div>
+</body>
+</html>

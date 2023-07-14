@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title></title>
+<script type="text/javascript">
+	/*  콜백함수란? 함수가 다른 함수의 파라메터로 전달되는 함수
+	 콜백함수는 함수가 실행되는 중간에 호출되어 상태 정보를 저장하거나 결과 값을 처리할 때 사용
+	 */
+
+	//------ 함수 선언
+	//  function add(){
+	// }
+	//------ 함수 호출
+	// add();
+/* 	function add(a, b, callbackFunc){
+	 var result = a + b;
+	 callbackFunc(result);
+	 }
+	
+	 add(10, 20, function(result){
+	 document.writeln("결과 : "+ result);
+	 });
+*/
+
+	function add(a, b, callbackFunc) {	// 얘도 함수
+		var result = a + b;
+		callbackFunc(result);
+		var count = 0;
+		var returnFunc = function(){
+			count++;
+			return a + " + " + b + " = " + result + ">" + count +"번째 호출";
+		}
+		return returnFunc;
+	}
+
+	var returnVar = add(10, 20, function(result) {	// add( , , fucntion{}); 를 받기 때문에 얘도 함수
+						document.writeln("결과 : " + result + "<br>");
+					});
+	
+	document.writeln("리턴받은 함수 결과 : "+ returnVar() + '<br>');
+	document.writeln("리턴받은 함수 결과 : "+ returnVar() + '<br>');
+	
+	
+	
+</script>
+</head>
+<body>
+
+</body>
+</html>

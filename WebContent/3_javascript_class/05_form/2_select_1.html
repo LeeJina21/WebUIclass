@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>이벤트 예제 2</title>
+<script type="text/javascript">
+	function checkEmail() {
+		var mailObj = document.frm.email;
+		if ((mailObj.value.indexOf("@", 0)) < 0
+				|| (mailObj.value.indexOf(".", 0)) < 0) {
+			alert("멜형식이 우째");
+			mailObj.focus(); // 포커스를 준다
+			mailObj.select(); // 문자를 선택상태로 한다
+			return false; // submit 안되게 한다
+		}
+
+		return true;
+	}
+	
+	function calc(){
+		var MANGO_PRICE = 4000;
+		var AVOCADO_PRICE = 5000;
+		
+		var mangoTotal = document.frm.mango.value * MANGO_PRICE;
+		var avocadoTotal = document.frm.avocado.value * AVOCADO_PRICE;
+		
+		document.frm.total.value = mangoTotal+avocadoTotal;
+		
+	}
+	
+</script>
+
+</head>
+<body>
+	주문서
+	<hr>
+
+	<form name="frm">
+		이름 <input type="text" name="name" onfocus="alert('실명써라~~잉');"><br>
+		이멜 <input type="text" name="email" onblur="javascript:checkEmail()"><br>
+		<hr>
+		<hr>
+
+		<table border='1'>
+			<tr>
+				<th>상품</th>
+				<th>단가</th>
+				<th>주문수량</th>
+			</tr>
+			<tr>
+				<td>망고</td>
+				<td>4000원</td>
+				<td><select name="mango" onchange="javascript:calc()">
+						<option>0</option>
+						<option>1</option>
+						<option>2</option>
+						<option>3</option>
+				</select> 뭉치</td>
+			</tr>
+			<tr>
+				<td>아보카도</td>
+				<td>5000원</td>
+				<td><select name="avocado" onchange="javascript:calc()">
+						<option>0</option>
+						<option>1</option>
+						<option>2</option>
+						<option>3</option>
+				</select> 봉다리</td>
+			</tr>
+			<tr>
+				<td colspan=2>함계</td>
+				<td><input type="text" name="total" size=6>원</td>
+			</tr>
+			<tr>
+
+			</tr>
+		</table>
+	</form>
+</body>
+</html>

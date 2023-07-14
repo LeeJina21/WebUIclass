@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title> 새로 열려진 창 </title>
+<script type="text/javascript">
+	//<!--
+		window.onload = function() {
+		var sel = document.getElementsByName('site');
+		
+		for(var i=0; i<sel.length; i++){
+			sel[i].onchange = showSite;
+			
+		}
+		
+		function showSite() {
+			{
+				/*
+				1. 선택한 값의 인덱스를 얻어온다.
+				2. 각각의 인덱스에 맞는 새로운 창을 연다
+					[예] 인덱스 값이 1이라면 http://www.daum.net으로 창을 연다
+				 */
+				//var idx = document.getElementById('site').value;
+				var idx = document.frm.site.value;
+				if (idx == 0) {
+					opener.location.href = "http://www.daum.net"
+				} else if (idx == 1) {
+					opener.location.href = "https://www.naver.com"
+				} else if (idx == 2) {
+					opener.location.href = "http://www.nate.com"
+				}
+
+			}
+
+		}
+	}
+	//-->
+</script>
+</head>
+<body>
+	<form name="frm">
+		<input type="radio" name="site" id="site" value='0'> 다음 <br>
+		<input type="radio" name="site" id="site" value='1' > 네이버 <br>
+		<input type="radio" name="site" id="site" value='2'> 네이트 <br>
+	</form>
+</body>
+</html>

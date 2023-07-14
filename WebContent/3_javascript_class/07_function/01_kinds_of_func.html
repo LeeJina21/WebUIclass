@@ -1,0 +1,44 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>자바스크립트 함수 만들기</title>
+<script type="text/javascript">
+	function first() {
+		var txt = document.getElementById('first');
+		txt.style.backgroundColor='#f00';
+		txt.style.color='#ff0';
+	}
+	
+	var second = new Function(
+			"var txt = document.getElementById('second'); txt.style.backgroundColor='#333'; txt.style.color='#fff';"
+	);
+	// 이것도 됨
+/* 	var second = new Function(
+			"var txt = document.getElementById('second')",
+			"txt.style.backgroundColor='#333', txt.style.color='#fff'"
+	); */
+	
+	var third = function() {
+		var txt = document.getElementById('third');
+		txt.style.backgroundColor='#ff0';
+		txt.style.color='#f00';
+	}
+	
+</script>
+
+
+</head>
+
+<body>
+	<p>
+		<span id="first"> function 명령 </span> <input type="button" value="확인" onclick="javascript:first()" />
+	</p>
+	<p>
+		<span id="second"> Function 생성자 </span> <input type="button" value="확인" onclick="javascript:second()" />
+	</p>
+	<p>
+		<span id="third"> 함수 리터럴 </span> <input type="button" value="확인" onclick="javascript:third()" />
+	</p>
+</body>
+</html>

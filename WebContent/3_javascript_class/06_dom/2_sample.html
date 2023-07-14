@@ -1,0 +1,47 @@
+<script type="text/javascript">
+   window.onload = function() {
+      var bInsert = document.getElementById('bInsert');
+      bInsert.onclick = insertCustomer;
+      var bDelete = document.getElementById('bDelete');
+      bDelete.onclick = deleteCustomer;
+   }
+
+   function insertCustomer() {
+      var Obj = document.getElementsByTagName("input");
+
+      var table = document.getElementById("listTable");
+      var tr = document.createElement("tr");
+
+      for (var i = 0; i < 4; i++) {
+         var text = document.createTextNode(Obj[i].value);
+         var tdch = document.createElement("td");
+         var td = document.createElement("td");
+         if (i == 0) {
+            var ch = document.createElement("input");
+            ch.type = "checkbox";
+            ch.id = "chbx" + i;
+            tdch.appendChild(ch);
+            td.appendChild(text);
+            tr.appendChild(tdch);
+            tr.appendChild(td);
+            Obj[i].value = "";
+            continue;
+         }
+         td.appendChild(text);
+         tr.appendChild(td);
+         Obj[i].value = "";
+      }
+      table.appendChild(tr);
+      Obj[0].focus();
+   }
+
+   function deleteCustomer() {
+      var isChecked = document.getElementsByTagName("input");
+      for (var i = 0; i < isChecked.length; i++) {
+         var chItem = isChecked.item(i);
+         if (chItem.type == "checkbox" && chItem.checked) {
+            chItem.parentNode.parentNode.remove();
+         }
+      }
+   }
+</script>

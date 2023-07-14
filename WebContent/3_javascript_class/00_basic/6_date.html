@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Date 객체</title>
+<script type="text/javascript">
+	var c = new Date;
+	document.writeln( c + '<br>');
+	
+	var d = new Date('2023/09/11');
+	document.writeln( d.getFullYear() + '<br>');
+	document.writeln( d.getMonth() + '<br>');		// 0월 시작
+	document.writeln( d.getDate() + '<br>');
+	document.writeln( d.getDay() + '<br>');			// 0요일( 일요일 )
+	
+	document.writeln('<hr>');
+	
+	var e = new Date();
+	e.setFullYear(2024);
+	e.setMonth(5);
+	e.setDate(15);
+	document.writeln(e+ '<br>');
+	document.writeln(e.toLocaleString()+ '<br>');		// 날짜 형식 표기 방식중 하나, 한국방식
+	document.writeln(e.toGMTString()+ '<br>');
+	document.writeln(e.toDateString()+ '<br>');
+	
+	document.writeln('<hr>');
+	e.setMonth(e.getMonth()-3);
+	document.writeln(e.toLocaleString()+ '<br>');
+	e.setDate(e.getDate()-20);
+	document.writeln(e.toLocaleString()+ '<br>');
+	
+	e.setDate(0)		// 0을 주면 입력되어 있는 전 달의 마지막 날을 반환
+	document.writeln(e.toLocaleString()+ '<br>');
+	
+	
+</script>
+</head>
+<body>
+
+</body>
+</html>

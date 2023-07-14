@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Document 예제</title>
+<meta charset="UTF-8">
+<style type="text/css">
+body {
+	background-color: #fc3;
+	color: #222354;
+}
+
+</style>
+
+<script type="text/Javascript">
+	//document는 내장객체
+	function show_document() {
+		// 텍스트 필드에 입력된 값을 변수에 지정하여 문서를 연다 -> 문서에 쓴다 -> 문서를 닫는다
+		// input의 name값을 찾기 위해 form의 name값을 먼저 찾는다.
+		//var userName = document.frm.userName.value;	// 입력한 값을 변수 userName에 담는다
+		// var userName = document.getElementById('userName').value;
+		var userName = document.forms[0].userName.value;	// forms를 배열처럼 사용할 수 있다
+		
+		document.open();
+		document.write("환영합니다 "+ userName+"님 <br>");
+		// 오늘 날짜 출력
+		var e = new Date();
+		document.write("오늘은 "+ e.toLocaleString() + "입니다");
+		
+		document.write();
+		document.write("<img src='../images/1.jpg' alt='내가 가고싶은 곳'> <br>");
+		document.hgcolor="66f";
+		document.fgcolor="22f";
+		document.close();
+		
+		//var result = document.getElementById('result');
+		//result.innerHTML = userName +'님 반갑습니다';	//html 이 공간안에다 = 
+	}
+	
+</script>
+</head>
+
+<body>
+	<form name="frm">
+		당신의 이름은? <input type="text" name="userName" id="userName" size="20">
+		 <input type="button" value="눌려봐" onclick="JavaScript:show_document()">
+		 
+		 <div id='result'></div>
+	</form>
+</body>
+</html>
+

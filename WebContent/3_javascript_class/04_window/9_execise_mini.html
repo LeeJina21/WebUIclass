@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+window.onload = function() {
+	document.getElementById("asd").value = opener.document.getElementById("chooseSite").value;
+	var sel = document.getElementsByName('site');
+	
+	for(var i=0; i<sel.length; i++){
+		sel[i].onchange = showSite;
+		
+	}
+	
+	function showSite() {
+		{
+			
+			/*
+			1. 선택한 값의 인덱스를 얻어온다.
+			2. 각각의 인덱스에 맞는 새로운 창을 연다
+				[예] 인덱스 값이 1이라면 http://www.daum.net으로 창을 연다
+			 */
+			//var idx = document.getElementById('site').value;
+			var idx = document.getElementById("site").value;
+			if (idx == 0) {
+				opener.document.getElementById("name2").value = "가산";
+			} else if (idx == 1) {
+				opener.document.getElementById("name2").value = "판교";
+			} else if (idx == 2) {
+				opener.document.getElementById("name2").value = "부평";
+			}
+
+		}
+
+	}
+}
+</script>
+</head>
+<body>
+	<form name="frm">
+		<input type="text" name="asd" id="asd" size="20"><br>
+		<input type="radio" name="site" id="site" value='0'> 가산 <br>
+		<input type="radio" name="site" id="site" value='1'> 판교 <br>
+		<input type="radio" name="site" id="site" value='2'> 부평 <br>
+	</form>
+</body>
+</html>

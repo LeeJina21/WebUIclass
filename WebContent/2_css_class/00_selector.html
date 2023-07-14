@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title> 연습</title>
+<style type="text/css">
+ /*1. 가중치에 따른 우선순위*/
+
+div { color:#f00; }
+.point10 { color:#00f; }
+#point100 { color:#0f0; }
+
+/* 속성값 선택 */
+/*input[type=text] {border: 2px solid #256436;}*/
+
+input:first-of-type {border: 2px solid #256436;}
+input:last-of-type {border: 2px solid #003235;}
+input:nth-child(3) {border: 2px solid #ab3456;}
+input:nth-last-child(2) {color: 2px solid #ff0;}
+input:disabled{
+	border: 2px solid #dd3462;
+}
+
+
+</style>
+</head>
+
+<body>
+	
+	<div id="point100" class="point10">안녕하세요</div>
+	
+	
+	<p>
+		<input type="text" value="입력1">
+		<input type="checkbox"> 선택
+		<input type="radio" name="rd"  checked="checked"> 예
+		<input type="radio" name="rd"> 아니오
+		<input type="text" value="입력2" disabled="disabled">		
+		<input type="button" value="확인">
+		<input type="button" value="취소">
+	</p>
+	
+	
+</body>
+</html>

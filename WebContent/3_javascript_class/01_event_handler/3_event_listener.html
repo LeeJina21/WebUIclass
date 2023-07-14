@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>이벤트 리스너 연결</title>
+<script type="text/javascript">
+	// 2. 윈도우가 열린 후에 핸들러 연력 방식2
+	window.onload = function(){
+		var btn = document.getElementById('btn');	// 디자인 입힐때!
+		btn.addEventListener('click',function(){
+			window.alert("버튼 이벤트 클릭3");
+		});
+	}
+	
+	
+</script>
+</head>
+<body>
+	<input type='button' value='눌러' id='btn' />
+</body>
+</html>

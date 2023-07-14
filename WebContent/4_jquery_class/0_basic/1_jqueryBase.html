@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+#here {
+	background-color: #fbf;
+	position: absolute;
+	top: 0%;
+	left: 0%;
+}
+</style>
+<script type="text/javascript" src="../lib/jquery-1.9.1.js"></script>
+<!-- <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>  -->
+<script type="text/javascript">
+	$(function() {
+		// 1. 이벤트 함수
+		var here = $('#here');
+		here.click(function() {
+			here.text('클릭하면 내용이 바뀝니다');
+		});
+
+		// mouseenter (마우스 들어갈때), mouseleave (마우스 빠져나갈때)
+		/*	here.mouseenter(function(){
+		 here.text('마우스 들어갔다');
+		 });
+		
+		 here.mouseleave(function(){
+		 here.text('제이쿼리');
+		 });
+		 */
+
+		here.hover(function() {	// 마우스 올라왔을때 떠났을떄
+			here.css('border', '3px solid green');
+		}, function() {
+			here.css('border', '3px dashed #0ee');
+		});
+
+	});
+
+	//$(function() 또 해도 됨
+	// 2. 효과함수
+	/* 	$(function() {
+	 var here = $('#here');
+	 //here.fadeOut(1000);
+	 //here.fadeOut(1000).fadeIn('slow');
+	 //here.slideUp(1000).slideDown(1000);
+	 here.animate({
+	 top:200, left:400
+	 });
+
+	 });
+	 */
+
+	// 3. 변수선언
+	$(function() {
+		var st = $('#student');
+/* 		var age = st.find('#age');
+		 var name = st.find('#name');		// 부모.find('자식') 찾기
+		 age.css('background', '#ade');
+		 name.css('border', '3px solid blue');
+*/
+
+		st.find('#age').css('background', '#ade');
+		st.find('#name').css('border', '3px solid blue');
+		
+		
+
+	});
+</script>
+</head>
+<body>
+
+	<div id="here">제이쿼리</div>
+	<div id="student">
+		<div id="name">홍동우</div>
+		<div id="age">20</div>
+	</div>
+
+</body>
+</html>

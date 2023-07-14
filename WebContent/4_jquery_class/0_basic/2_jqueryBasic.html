@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+.active {
+	border: 3px solid red
+}
+</style>
+<script type="text/javascript" src="../lib/jquery-1.9.1.js"></script>
+<script type="text/javascript">
+	$(function() {
+		// 1.
+		$('.man').css('background', '#efc');
+		$('.woman').css({
+			'background' : '#eaa'
+		});
+
+		// 2
+		var redBox = $('.inputText');
+
+		/* 	redBox.focus(function(){
+		 redBox.addClass('active');		//addClass 클래스 속성 추가
+		 });
+		
+		 redBox.blur(function(){
+		 redBox.removeClass('active');	// removeClass 클래스 빼기
+		 });
+		 */
+
+		redBox.focus(function() {
+			$(this).addClass('active'); // 이벤트가 발생하는 것만 $(this)
+		});
+
+		redBox.blur(function() {
+			$(this).removeClass('active');
+		});
+
+		// 3.
+		$('#divText').text('<img src="images/puppy.jpg">'); // 글씨 대체
+		$('#divHtml').html('<img src="images/puppy.jpg">'); // 이미지로 들어감
+		$('#divEmpty').empty(); // 없어짐
+
+		// attr(sec, 고양이그림), 고양이 그림 클릭 -> 그림을 선택했다는 경고창, 테두리는 알아서(클릭시 변경은x)
+
+		$('#changeGrim').attr('src', 'images/cat.jpg').click(function() {
+			alert('그림을 선택했습니다');
+		}).css({
+			'border' : '3px dashed #0ee'
+		});
+		
+		
+		// 4
+		$('#tf').val('저는 홍동우입니다');	// .val() 	값줄때 사용
+		$('#ta').val('작정중...');
+		$('#sel').val('masan');	// 기본값으로 masan이 성택됨
+		$('#sel_m').val(['seom2', 'seom1']); // 다중선택되면 배열로 넣을 수 있음
+		// 라디오 버튼을 선택하고 싶으면
+		//$('라디오버튼:checked').val() // 디폴트로 라디오버튼을 선택하고 싶으면 $('라디오버튼').attr('checked','true');
+		
+		
+		// 5
+		var actor = $('#actor');
+		var tae = $('#tae');
+		var su = $('#su');
+		var bin = $('#bin');
+		
+		actor.append(tae);	// 부모에게 자식을 붙임
+		su.appendTo(actor);		// 자식에게 부모를 붙임
+		
+		var n = $('<div/>');
+		n.text('새배우');
+		n.appendTo(actor);
+		
+		actor.append('<div> 홍성민</div>');
+		
+		
+		// 6
+		/* $('.data').click(function(){
+			alert($(this).text());
+		}); */
+		$('.data').each(function(){		// .each() 선택하는 자기자신을 지칭하는 함수
+			$(this).click(function(){
+				alert($(this).text());
+			});
+		});
+		
+		
+		
+		
+	});
+</script>
+</head>
+<body>
+	<!--  1 -->
+	<ul>
+		<li class="man">김수현</li>
+		<li class="woman">김희애</li>
+		<li class="woman">송혜교</li>
+		<li class="man">하정우</li>
+		<li class="woman">김태희</li>
+	</ul>
+	<!-- 2 -->
+	<input type="text" class="inputText" />
+	<input type="text" class="inputText" />
+	<input type="text" class="inputText" />
+
+
+	<!-- 3 -->
+	<div id="divText">여기에 글씨를</div>
+	<div id="divHtml">여기에 그림을</div>
+	<div id="divEmpty">여기를 비움</div>
+	<hr>
+	<p>
+		<img src="images/puppy.jpg" id='changeGrim'>
+	</p>
+
+	<!-- 4 -->
+	<p>
+		<input id="tf" type="text" size="20" />
+		<textarea id="ta" rows="3" cols="20"></textarea>
+		<select id="sel">
+			<option value="seoul">서울</option>
+			<!-- option에 value 값 없어도 됨 -->
+			<option value="busan">부산</option>
+			<option value="masan">마산</option>
+			<option value="incheon">인천</option>
+		</select>
+		<select id="sel_m" multiple="multiple">
+			<option value="seom1">제주도</option>
+			<option value="seom2">울릉도</option>
+			<option value="seom3">독도</option>
+			<option value="seom4">거제도</option>
+		</select>
+		<input type='button' id='check' value='확인' />
+		<input type='button' id='sel' value='초기화' />
+		<!--  [과제] 클릭시 값 지정하려면  -->
+		<div id='result'></div>
+	</p>
+
+	<!-- 5 -->
+	<div id="actor">배우</div>
+	<div id="tae">김태희</div>
+	<div id="su">김수현</div>
+	<div id="bin">현빈</div>
+	<!-- [ 과제 ] 동적 테이블 만들기  -->
+
+	<!-- 6 -->
+	<div class="data" >이름</div>
+	<div class="data" >직업</div>
+	<div class="data" >나이</div>
+
+</body>
+</html>

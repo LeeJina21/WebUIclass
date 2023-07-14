@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>회원가입</title>
+</head>
+<body>
+
+	<form action="#">
+		
+			<fieldset>
+				<legend>로그인 정보</legend>
+				<ol>
+					<li><label for="id">아이디<input id="id" type="text" required="required" autofocus="autofocus"></label></li>
+					<li><label for="pass1">비밀번호<input id="pass1" type="password" required="required"></label></li>
+					<li><label for="pass2">비밀번호 확인<input id="pass2" type="password" required="required"></label></li>
+					<li><label for="level">비밀번호 확인<input id="level" type="text" readonly="readonly" value="준회원"></label></li>
+				</ol>
+			</fieldset>
+			
+		<fieldset>
+			<legend>개인정보</legend>
+			<ol>
+				<!-- required="required" 필수 입력사항 이거 입력 안하면 전송 안됨 -->
+				<li><label for="name">이름</label> <input id="name" name="name" type="text" placeholder="5자미만 공백없이" required="required"></li>
+				<li><label for="email">메일 주소</label> <input id="email" name="email" type="email" placeholder="email@domain.com" required="required"></li>
+				<li><label for="tel">연락처</label> <input id="tel" name="tel"type="tel" required="required"></li>
+			</ol>
+		</fieldset>
+
+		<fieldset>
+			<legend>코딩 숙련도(상, 중, 하)</legend>
+			<ol>
+				<li><input id="skill" type="range" min="1" max="3" step="1"></li>
+			</ol>
+		</fieldset>
+
+
+		<fieldset>
+			<button type="submit">가입</button>
+		</fieldset>
+	</form>
+
+</body>
+</html>

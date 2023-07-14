@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+	//-------------------------------------------------------------------------
+	//  즉시 실행 함수	// 
+	//	 - 함수를 변수에 직접 할당하는 것이 아니라 함수의 결과물을 할당하기 위해 즉시 실행 함수를 사용(?)
+	//	- 추후에 클로져와 관련
+	var byensu = function(num) {
+		return function(){
+			--num;
+			document.writeln('>num = '+ num + '<br>');
+		}
+	}
+	
+	document.writeln(typeof byensu + '<br>');
+	var bun = byensu(10);		// 리턴타입 함수
+	bun();
+	bun();
+	bun();
+	
+</script>
+</head>
+<body>
+
+</body>
+</html>

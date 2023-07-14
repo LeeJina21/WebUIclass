@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>JQuery 시작</title>
+<script type="text/javascript" src="../lib/jquery-3.1.1.js"></script>
+<script type="text/javascript">
+	//$(document).ready(function(){
+	//}); 
+	
+	/* $(function(){
+		$('#here').hide();
+	}); */
+	
+	// 0. 함수 선언 방식
+	// (1) function 명령어 함수
+	function myFunc(){
+		alert('시작');
+	}
+	$(myFunc);		// 정적 구조라 어디서 호출해도 상관없음
+	
+	// (2) 함수리터럴 함수인 경우
+	var myFunc2 = function(){
+		alert('시작2');
+	}
+	$(myFunc2);		// 실행 후 부르는거라 함수 위에서 호출하면 실행 안됨
+	
+	// (3) 가장 보편적인 제이쿼리 함수 형식, 정의와 동시에 호출
+	$(function(){
+		alert('시작3');
+	});
+	
+	
+	
+	
+</script>
+
+</head>
+<body>
+	<div id="here">wpdlznjfl</div>
+</body>
+</html>

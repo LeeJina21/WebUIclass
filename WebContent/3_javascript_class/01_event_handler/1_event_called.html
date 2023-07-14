@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>이벤트 핸들러 연결</title>
+<script type="text/javascript">
+	// 1. html에서 이벤트 함수 호출
+	/* function btn_click(){
+		window.alert("버튼 이벤트 클릭");
+	} */
+
+	var btn_click = function() {// 함수 펑션 선언.
+		window.alert("버튼 이벤트 클릭");
+	}
+</script>
+</head>
+
+<body>
+	<input type='button' value='눌려' onclick='javacript:btn_click()' />
+</body>
+</html>

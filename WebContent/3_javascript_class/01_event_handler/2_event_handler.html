@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>이벤트 핸들러 연결</title>
+<script type="text/javascript">
+	// 2. 윈도우가 열린 후에 핸들러를 연결하는 - 방법1 (html과 js가 완벽히 분리) // 요소.onload = 함수;
+	/* 	window.onload = init;	// 원도우가 로딩되면 // 함수명 지정시, 연결시 ()하면 안됨! (= init)
+	 function init(){	
+	 document.getElementById('btn').onclick = btn_click;
+	 function btn_click(){
+	 window.alert("버튼 이벤트 클릭");
+	 }
+	 } */
+
+	// 2번 축약버전
+	/* window.onload = function(){
+		document.getElementById('btn').onclick = btn_click;
+		function btn_click(){
+			window.alert("버튼 이벤트 클릭");
+		}
+	} */
+
+	// 2번 축약버전의 축약
+	window.onload = function() {
+		document.getElementById('btn').onclick = function(e) { // e 안써줘도 됨 이벤트 타입 볼려고 쓴거임
+			window.alert("버튼 이벤트 클릭2" + e);
+		}
+	}
+</script>
+</head>
+<body>
+	<input type='button' value='눌러' id='btn' />
+</body>
+</html>

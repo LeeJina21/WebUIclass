@@ -1,0 +1,111 @@
+<!-- 9_exercise.html
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title> 여기가 원래 창 </title>
+
+</head>
+<body bgcolor="#ddddff">
+   <form name="frm">
+   <select name="city" onchange="javascript:send()">
+      <option>서울시</option>
+      <option>경기도</option>
+      <option>충청도</option>
+      <option>강원도</option>
+   </select>
+   <input type="text" name="result"/>
+   </form>
+   <script type="text/javascript">
+      var winObj = window.open("6_2_exercise.html","newWin","width=480,height=360");
+      winObj.focus();
+      
+      function send(){
+         var idx = document.frm.city.selectedIndex;
+         var ct = document.frm.city[idx].text;
+         winObj.frm.result.value = ct;
+      }
+   </script>
+</body>
+</html>
+
+ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
+9_exercise2
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title> 새로 열려진 창 </title>
+<script type="text/javascript">
+   <!--
+      function changeSite(){
+      
+      switch(document.frm.site.value){
+         case '0' :
+            window.opener.frm.result.value = "가산";
+            break;
+         case '1' :
+            window.opener.frm.result.value = "판교";
+            break;
+         case '2' :
+            window.opener.frm.result.value = "부평";
+            break;
+      }
+   }
+   //-->
+</script>
+</head>
+<body>
+	<form name="frm">
+		<input type="text" name="result" /><br> <input type="radio"
+			name="site" value='0' onclick="javascript:changeSite()"> 가산 <br>
+		<input type="radio" name="site" value='1'
+			onclick="javascript:changeSite()"> 판교 <br> <input
+			type="radio" name="site" value='2' onclick="javascript:changeSite()">
+		부평 <br>
+	</form>
+</body>
+</html>
+
+ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ 9_exercise_2.html
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>부분 독립 페이지</title>
+<script type="text/javascript">
+	function changeSite() {
+		var site;
+		switch (document.frm.site.value) {
+		case "다음":
+			site = "www.daum.net";
+			break;
+		case "네이버":
+			site = "www.naver.com";
+			break;
+		case "네이트":
+			site = "www.nate.com";
+			break;
+		}
+		ifrm.location.href = "http://" + site;
+	}
+</script>
+</head>
+<body>
+	<form name="frm">
+		<input type="radio" name="site" onclick="javascript:changeSite()"
+			value="다음" />다음<br /> <input type="radio" name="site"
+			onclick="javascript:changeSite()" value="네이버" />네이버<br /> <input
+			type="radio" name="site" onclick="javascript:changeSite()"
+			value="네이트" />네이트<br /> <br /> <br />
+
+
+
+	</form>
+	<iframe name="ifrm" width="420" height="315" src="5_subtest.html" />
+</body>
+</html>
+-->

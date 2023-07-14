@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+	var saram = {
+		name : "홍길동",
+		age : 22
+	};
+	var saram2 = {
+		name : "홍길자",
+		age : 30
+	};
+
+	var members = [ saram, saram2 ];
+	//console.log(members[0]);
+
+	members.push({
+		name : '누구냐',
+		age : 30
+	});
+	members.push({
+		name : '누구냐',
+		age : 30,
+		job : '백수'
+	});
+
+	for (var i = 0; i < members.length; i++) {
+		document.writeln(members[i]+'<br>');
+		console.log(members[i]);
+	}
+	
+	members.pop();	// 배열 마지막 삭제
+	for(var i in members){
+		console.log(members[i]);
+	}
+	
+	delete members[1];	// 인덱스 1도 삭제되기 때문에 갯수가 다르게 나옴
+	for(var i in members){
+		console.log(i + " : " + members[i]);
+	}
+	
+	var add = function(a, b){
+		return a+b;
+	}
+	
+	members.push(add);
+	for(var i in members){
+		console.log(members[i]);
+	}
+	console.log(members[3](3,4));	// 함수명이 아닌 배열의 요소로 접근가능
+	
+	
+</script>
+</head>
+<body>
+
+</body>
+</html>

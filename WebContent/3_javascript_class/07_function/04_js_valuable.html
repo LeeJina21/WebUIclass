@@ -1,0 +1,26 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>자바스크립트 변수와 범위</title>
+<script type="text/javascript">
+	// 켤론 var를 붙이면 문제없다
+	// 글로벌 변수 & 지역변수
+	var scope = '글로벌 변수';
+	
+	function getValue(){
+		var scope ='지역변수';	// var를 사용하지 않으면, 글로벌 변수 취급 => 항상 var 붙여서 사용
+		return scope;
+	}
+	document.writeln("1>" + getValue());
+	document.writeln("2>" + scope);
+	
+	
+</script>
+</head>
+
+<body>
+
+
+</body>
+</html>

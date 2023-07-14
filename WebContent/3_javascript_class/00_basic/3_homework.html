@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+	/* var i = [];
+	var j = 1;
+	document.writeln('<table border="1">')
+	for (var a = 0; a < 5; a++) {
+
+		document.writeln('<tr>')
+		for (var b = 0; b < 5; b++) {
+			i[a] = j;
+			j++
+			document.writeln('<td>' + i[a] + '</td>')
+		}
+
+		document.writeln('<tr>')
+	}
+	document.writeln('</table>') */
+	
+	var num = 1;
+	var t = '<table border="1">';
+	
+	for (var i=0; i<5; i++){
+		t += "<tr>";
+		
+		for(var j=0; j<5; j++){
+			t += "<td>"+ num + "</td>";
+			num++;
+		}
+		t += "</tr>";
+	}
+	t += '</table>';
+	document.writeln(t);
+	
+</script>
+</head>
+<body>
+
+
+
+
+</body>
+</html>

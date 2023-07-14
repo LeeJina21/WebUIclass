@@ -1,0 +1,104 @@
+// 창의 값을 다른창으로 전달
+9_execise.html
+<script type="text/javascript">
+   function cityChange() {
+      window.name = "9_execise.html";
+      var winObj = window.open("9_execise_sub.html","new_window","width = 400 height= 400")
+      winObj.document.getElementById("selName").value = document.getElementById("b_city").value;
+      switch (document.getElementById("b_city").value) {
+      case '서울':
+         winObj.document.getElementById("a").innerText = "성북구";
+         winObj.document.getElementById("b").innerText = "동대문구";
+         winObj.document.getElementById("c").innerText = "서대문구";
+         winObj.document.getElementsByName("city")[0].value = "성북구";
+         winObj.document.getElementsByName("city")[1].value = "동대문구";
+         winObj.document.getElementsByName("city")[2].value = "서대문구";
+         break;
+      case '부산':
+         winObj.document.getElementById("a").innerText = "해운대";
+         winObj.document.getElementById("b").innerText = "울사";
+         winObj.document.getElementById("c").innerText = "영도";
+         winObj.document.getElementsByName("city")[0].value = "해운대";
+         winObj.document.getElementsByName("city")[1].value = "울사";
+         winObj.document.getElementsByName("city")[2].value = "영도";
+         
+      case '대전':
+         winObj.document.getElementById("a").innerText = "유성구";
+         winObj.document.getElementById("b").innerText = "은행동";
+         winObj.document.getElementById("c").innerText = "둔당동";
+         winObj.document.getElementsByName("city")[0].value = "유성구";
+         winObj.document.getElementsByName("city")[1].value = "은행동";
+         winObj.document.getElementsByName("city")[2].value = "둔당동";
+      default:
+         break;
+      }
+   }
+</script>
+</head>
+<body>
+   <form name="bigName">
+      <input type="text" name = "c_name"/> <br/>
+      <select name = "b_city" id= "b_city" onchange="cityChange()">
+         <option></option>
+         <option>서울</option>
+         <option>부산</option>
+         <option>대전</option>
+      </select>
+   </form>
+   <script type="text/javascript">
+   </script>
+</body>
+</html>
+
+--------------------
+9_execise_sub.html
+<script type="text/javascript">
+   function changeName(num) {
+   opener.document.bigName.c_name.value = document.getElementsByName("city")[num].value
+   
+   window.close();
+}
+</script>
+</head>
+<body>
+   <form name="soName">
+      <input type="text" name = "selName" id = "selName"> <br/> 
+      <input type="radio" name="city"  value=" " id="city" onclick="changeName(0)"> <label id = "a"> </label> <br/>
+      <input type="radio" name="city"  value=" " id="city" onclick="changeName(1)"> <label id = "b"> </label> <br/> 
+      <input type="radio" name="city"  value=" " id="city" onclick="changeName(2)"> <label id = "c"> </label> <br/>
+   <br>
+   </form>
+</body>
+<script type="text/javascript">
+</script>
+</html>
+
+// 다른유형의 문제
+9_execise_2
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+<script type="text/javascript">
+   function sizeChange(num) {
+      switch (num) {
+      case 0:
+         site_window.location = "http://www.naver.com";
+         break;
+      case 1:
+         site_window.location = "http://www.daum.net";
+         break;
+      case 2:
+         site_window.location = "http://www.nate.com";
+         break;
+      }
+   }
+</script>
+</head>
+<body>
+   <form name="sName">
+   <input type="radio" name = "sel" onclick="sizeChange(0)"/> 네이버
+   <input type="radio" name = "sel" onclick="sizeChange(1)"/> 다음
+   <input type="radio" name = "sel" onclick="sizeChange(2)"/> 네이트
+   </form>
+</body>
+<iframe name="site_window" width="800" height="800" src ="9_execise_2_sub.html"></iframe>

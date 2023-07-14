@@ -1,0 +1,84 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>DOM에서 노드 검색 방법</title>
+<script type="text/javascript">
+	window.onload = function() {
+		document.getElementById('btn').onclick = function() {
+
+			// 1. 아이디 값으로 노드 얻어오기
+			/* var name = document.getElementById('name');	// 가져오는 데이터
+			var result = document.getElementById('result');		// 집어넣을 영역
+				result.innerHTML = name.value + '님!'; */
+
+			// 2. 클레스명으로 노드 얻어오기
+			/* var name = document.getElementsByClassName('cname');
+			var result = document.getElementById('result');		// 집어넣을 영역
+			result.innerHTML = name[0].value + '님!';  */
+
+			// 3. 태그명으로 노드 얻어오기
+			/* var inputList = document.getElementsByTagName('input');
+			
+			for(var i=0; i<inputList.length; i++){
+				if(inputList.item(i).type =='text' && inputList.item(i).value==""){
+				//if(inputList[i].type=='text' && inputList[i].value==""){
+					result.innerHTML = inputList[i].value;
+					alert("모든 항목을 입력하세요");
+					return;
+				}
+			} */
+
+			
+			
+			
+			
+
+			/* nodeType 프로퍼티의 반환값
+			1 -   요소 노드
+			2 - 속성 노드
+			3 - 텍스트 노드
+			4 - CDATA 섹션
+			5 - 실제참조 노드
+			6 - 셀제선언 노드
+			7 - 처리명령 노드
+			8 - 코멘트 노드
+			9 - 문서 노드
+			10 - 문서형선언 노드
+			11 - 문서의 단편 (fragment)
+			12 - 기법선언 노드
+			 */
+			 
+			// 4. 현재 위치에서 상대적인 관계로 노드 얻어오기
+			var me = document.getElementById('label');
+			var childs = me.childNodes;
+			//alert(childs.length);		// 식별하는지 확인작업 9(공백노트 포함 길이)
+			
+			for(var i=0; i<childs.length; i++){
+				
+				// childs[i].nodeType == 1 	// 태그만 잡기
+				// childs[i].name 			// 태그명
+				if(childs.item(i).nodeType == 1 && childs.item(i).value==""){
+				//if(childs[i].nodeType == 1 && childs[i].value==""){	
+					alert(childs[i].name + " 항목을 입력하세요");
+					return;
+				}
+			}
+
+		}
+	}
+</script>
+</head>
+
+<body>
+	<!-- 1 -->
+	<form name="fm">
+		<label id="label"> 이름 : <input type="text" id="name"
+			class="cname" name="name" size="15" /> <!-- 2 --> 학과 : <input
+			type="text" id="dept" name="dept" size="15" /> 학교 : <input
+			type="text" id="univ" name="univ" size="15" />
+		</label> <input id="btn" type="button" value="버튼" />
+		<div id="result"></div>
+	</form>
+</body>
+</html>

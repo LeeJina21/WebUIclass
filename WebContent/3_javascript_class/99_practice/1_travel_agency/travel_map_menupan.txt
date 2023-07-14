@@ -1,0 +1,178 @@
+// 1번 문제_ 지도
+<!DOCTYPE html>
+<html lang="ko"> 
+	<head>
+		<meta charset="UTF-8">
+		<title>Drag and Drop</title>
+		<!-- Kakao Map API Key -->	
+		<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=	a6cdaf8d2b33e14b31107e65123d9177"></script>
+	</head> 
+	<body>
+		
+		<div id="map" style="width:100%;height:500px;"></div> 
+		<script>
+			//���� ����
+			const mapContainer = document.getElementById('map'),
+				mapOption = { 
+					// 지도의 중심 좌표(임의 설정)
+					center: new kakao.maps.LatLng(37.47891878258176,126.88132885572898),	
+			
+					// 지도의 확대 레벨(임의 설정)
+					level: 4		
+				};
+			    
+			//설정한 지도 생성
+			const map = new kakao.maps.Map(mapContainer, mapOption);
+			
+			//마커 초기화(초기화 시 지도에 미리 지정 가능 : 카카오맵 API 문서 참조)
+			const marker = new kakao.maps.Marker();
+			
+			//카카오맵 클릭 이벤트 추가
+			kakao.maps.event.addListener(map, 'click', (mouseEvent) => {
+				//클릭한 위도, 경도 정보 불러오기
+				const latlng = mouseEvent.latLng;
+				//��Ŀ ��ġ�� Ŭ���� ��ġ�� �̵�
+				marker.setPosition(latlng);
+				marker.setMap(map);
+				
+				alert(`���� : ${latlng.getLat()}, �浵 : ${latlng.getLng()}`);
+			});
+		</script>
+	</body>
+</html>
+
+------------------------------------------------------------------------------------------------------------------------------------------------
+
+// 2번 문제_ 트레블_ 인원을 넣는 순간 금액이 바뀌도록
+<script type="text/javascript">
+	// oninput 이벤트 연결도 가능
+	//1 인원별 상품 합계금액 자동계산
+	//2 영문이름 전화번호 주민번호 *이메일은 정규표현식을 참고하여 알맞은 종류의 값만 입력되도록
+	window.onload = function() {
+		var tf1 = document.getElementById("textfield");
+		var tf2 = document.getElementById("textfield2");
+		var tf3 = document.getElementById("textfield3");
+		var tf4 = document.getElementById("textfield4");
+		var tf6 = document.getElementById("textfield6");
+		var tf7 = document.getElementById("textfield7");
+		var tf8 = document.getElementById("textfield8");
+		var tf9 = document.getElementById("textfield9");
+		var tf10 = document.getElementById("textfield10");
+		var tf11 = document.getElementById("textfield11");
+		var tf12 = document.getElementById("textfield12");
+		var tf13 = document.getElementById("textfield13");
+
+		tf1.oninput = calcPrice;
+		tf2.oninput = calcPrice;
+		tf3.oninput = calcPrice;
+		tf4.oninput = calcPrice;
+		tf6.oninput = checkNumber;
+		tf7.oninput = checkNumber;
+		tf8.oninput = checkNumber;
+		tf9.oninput = checkUpper;
+		tf10.oninput = checkUpper;
+		tf11.oninput = checkNumber;
+		tf12.oninput = checkNumber;
+		tf13.onblur = checkEmail;
+		
+		function checkUpper(){
+			var regex = new RegExp('[A-Z]+$');
+			if(!regex.test(this.value)){
+				alert("���� �빮�ڷ� �Է��� �ּ���");
+				this.value = "";
+				return false;
+			}else {
+				return true;
+			}
+		}
+		
+		function checkNumber(){
+			var regex = new RegExp('[0-9]+$');
+			if(!regex.test(this.value)){
+				alert("���ڸ� �Է��� �ּ���");
+				this.value = "";
+				return false;
+			}else {
+				return true;
+			}
+		}
+		
+		function checkEmail(){
+			var regex = new RegExp('[a-z0-9]+@[a-z]+\.[a-z]{2,3}');
+			if (!regex.test(tf13.value)) {
+				alert("�̸����� ��Ȯ�� �Է��� �ּ���");
+				tf13.value = "";
+				return false;
+			}
+			else {
+				return true;
+			}
+		}
+
+		function calcPrice() {
+			tf4.value = (tf1.value * 39000) + (tf2.value * 29000)
+					+ (tf3.value * 19000);
+		}
+
+	}
+</script>
+
+------------------------------------------------------------------------------------------------------------------------------------------------
+
+// 3번 문제_ 메뉴판_js파일
+
+window.onload =function(){
+		var totalPrice = 0;
+		var nowPrice = 0;
+		var allPrice = [1000, 2000, 3000, 2000, 1000, 1500];
+		
+		var btn = document.getElementById('btn');
+		var count = document.getElementById('count');
+		var total = document.getElementById('total');
+		var menu = document.getElementsByClassName('menu');
+		console.log(menu[0].getAttribute("id"));
+		for(let i=0; i<menu.length; i++){
+			menu[i].addEventListener('click', function(){
+				for(let j=0; j<menu.length; j++){
+					if(i==j){
+						switch(this.getAttribute("id")){
+							case "menu1" :
+								menu[i].style.backgroundColor = 'red';
+								break;
+							case "menu2" :
+								menu[i].style.backgroundColor = 'skyblue';
+								break;
+							case "menu3" :
+								menu[i].style.backgroundColor = 'yellow';
+								break;
+							case "menu4" :
+								menu[i].style.backgroundColor = 'pink';
+								break;
+							case "menu5" :
+								menu[i].style.backgroundColor = 'gray';
+								break;
+							case "menu6" :
+								menu[i].style.backgroundColor = 'gold';
+								break;
+						}
+						
+						nowPrice = allPrice[j];  
+					}else{
+						menu[j].style.backgroundColor = 'white';
+					}
+				}
+				
+			});
+		}
+				
+		btn.addEventListener('click', function(){
+		totalPrice += nowPrice * parseInt(count.options[count.selectedIndex].value);
+		total.value = totalPrice;
+		
+		for(let i=0; i<menu.length; i++){
+			menu[i].style.backgroundColor = 'white';
+		}
+		nowPrice = 0;
+		count.options[0].selected = true;
+	});
+}
